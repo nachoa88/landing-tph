@@ -1,3 +1,70 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.bg-primary {
+  @apply bg-stone-300;
+}
+
+.bg-secondary {
+  @apply bg-emerald-700/20;
+}
+
+.primary-text {
+  @apply text-lg font-semibold text-stone-900;
+}
+
+.secondary-text {
+  @apply text-sm text-stone-700;
+}
+
+.nav-link {
+  @apply text-sm text-stone-900 font-semibold uppercase tracking-widest;
+}
+
+.nav-link-no-color {
+  @apply text-sm font-semibold uppercase tracking-widest;
+}
+
+.nav-link-hover:hover {
+  @apply text-emerald-700 transition duration-300 ease-in-out;
+}
+
+/* Para CTAs y elementos destacados */
+.accent-color {
+  @apply bg-emerald-700 text-stone-100 hover:bg-emerald-800 transition-colors;
+}
+
+/* Para secciones destacadas */
+.highlight-section {
+  @apply bg-gradient-to-br from-stone-200 to-stone-300;
+}
+
+/* Para bordes y separadores */
+.border-accent {
+  @apply border-emerald-700/30;
+}
+
+/*ALTERNATIVE COLOR PALETTE, JUST IN CASE*/
+/* .bg-primary {
+  @apply bg-emerald-800;
+}
+
+.bg-secondary {
+  @apply bg-emerald-300/30;
+}
+
+.primary-text {
+  @apply text-lg font-semibold text-slate-200;
+}
+
+.secondary-text {
+  @apply text-sm text-slate-300;
+}
+
+.nav-link {
+  @apply text-sm text-slate-200 font-semibold uppercase tracking-widest;
+}
+.nav-link-hover:hover {
+  @apply text-emerald-950 transition duration-300 ease-in-out;
+} */
