@@ -3,6 +3,7 @@ import { ref } from "vue";
 import { RouterLink } from "vue-router";
 import { useRouter } from "vue-router";
 import { useAuthStore } from "@/stores/useAuthStore";
+import BaseButton from "@/components/ui/BaseButton.vue";
 
 const isMenuOpen = ref(false);
 const authStore = useAuthStore();
@@ -42,22 +43,9 @@ const handleLogout = () => {
 
       <!-- Login / Logout Buttons -->
       <div class="flex items-center gap-4">
-        <div v-if="!authStore.isLoggedIn">
-          <RouterLink
-            to="/login"
-            class="inline-flex items-center mr-0 sm:mr-2 px-6 py-2 nav-link-no-color text-stone-100 rounded-lg bg-emerald-700 hover:bg-emerald-800 transition-colors"
-          >
-            Log in
-          </RouterLink>
-        </div>
-        <div v-else>
-          <button
-            @click="handleLogout"
-            class="inline-flex items-center mr-0 sm:mr-2 px-6 py-2 nav-link-no-color text-stone-100 rounded-lg bg-red-700 hover:bg-red-800 transition-colors"
-          >
-            Log out
-          </button>
-        </div>
+        <BaseButton v-if="!authStore.isLoggedIn" to="/login" variant="primary">Log in</BaseButton>
+        <BaseButton v-else variant="danger" :onClick="handleLogout">Log out</BaseButton>
+
         <!-- Mobile Menu Button -->
         <button
           @click="toggleMenu"
