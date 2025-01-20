@@ -18,38 +18,38 @@ This project is a technical test for a job interview. It is a responsive landing
 
 ### Reqres API Endpoints
 
-1. **Register Endpoint**  
+1. **Login Endpoint**  
+   - URL: `https://reqres.in/api/login`  
+   - Method: `POST`  
+   - Request Payload:  
+     ```json
+     {
+       "email": "eve.holt@reqres.in",
+       "password": "cityslicka"
+     }
+     ```
+   - Response:
+     ```json
+     {
+       "token": "QpwL5tke4Pnpja7X4"
+     }
+     ```
+
+2. **Register Endpoint**  
    - URL: `https://reqres.in/api/register`  
    - Method: `POST`  
    - Request Payload:  
      ```json
      {
-       "email": "user@example.com",
-       "password": "password123"
+       "email": "eve.holt@reqres.in",
+       "password": "pistol"
      }
      ```
    - Response:
      ```json
      {
        "id": 4,
-       "token": "QpwL5tke4Pnpja7X"
-     }
-     ```
-
-2. **Login Endpoint**  
-   - URL: `https://reqres.in/api/login`  
-   - Method: `POST`  
-   - Request Payload:  
-     ```json
-     {
-       "email": "user@example.com",
-       "password": "password123"
-     }
-     ```
-   - Response:
-     ```json
-     {
-       "token": "QpwL5tke4Pnpja7X"
+       "token": "QpwL5tke4Pnpja7X4"
      }
      ```
 
@@ -83,6 +83,8 @@ This project is a technical test for a job interview. It is a responsive landing
 
 The application should be visible in: `http://localhost:5173`
 
+---
+
 ## Testing
 
-`npm run test`
+TODO: tests --> `npm run test`

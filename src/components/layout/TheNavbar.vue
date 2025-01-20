@@ -1,16 +1,27 @@
 <script setup>
 import { ref } from "vue";
 import { RouterLink } from "vue-router";
+import { useRouter } from "vue-router";
+import { useAuthStore } from "@/stores/useAuthStore";
+
+const isMenuOpen = ref(false);
+const authStore = useAuthStore();
+const router = useRouter();
 
 const navLinks = [
   { to: "/", text: "Home" },
   { to: "/about", text: "About" },
 ];
 
-const isMenuOpen = ref(false);
-
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value;
+};
+
+const handleLogout = () => {
+  console.log("Logging out...");
+  authStore.logout();
+  console.log("Token after logout:", authStore.token);
+  router.push("/");
 };
 </script>
 
@@ -29,16 +40,24 @@ const toggleMenu = () => {
         </RouterLink>
       </div>
 
-      <!-- Desktop Login Button -->
+      <!-- Login / Logout Buttons -->
       <div class="flex items-center gap-4">
-        <!-- Login Button (visible on all screens) -->
-        <RouterLink
-          to="/login"
-          class="inline-flex items-center mr-0 sm:mr-2 px-6 py-2 nav-link-no-color text-stone-100 rounded-lg bg-emerald-700 hover:bg-emerald-800 transition-colors"
-        >
-          Log in
-        </RouterLink>
-
+        <div v-if="!authStore.isLoggedIn">
+          <RouterLink
+            to="/login"
+            class="inline-flex items-center mr-0 sm:mr-2 px-6 py-2 nav-link-no-color text-stone-100 rounded-lg bg-emerald-700 hover:bg-emerald-800 transition-colors"
+          >
+            Log in
+          </RouterLink>
+        </div>
+        <div v-else>
+          <button
+            @click="handleLogout"
+            class="inline-flex items-center mr-0 sm:mr-2 px-6 py-2 nav-link-no-color text-stone-100 rounded-lg bg-red-700 hover:bg-red-800 transition-colors"
+          >
+            Log out
+          </button>
+        </div>
         <!-- Mobile Menu Button -->
         <button
           @click="toggleMenu"

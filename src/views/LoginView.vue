@@ -3,12 +3,14 @@ import { RouterLink } from "vue-router";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 import { authService } from "@/services/authService";
+import { useAuthStore } from "@/stores/useAuthStore";
 
 const email = ref("");
 const password = ref("");
 const error = ref(null);
 const loading = ref(false);
 const router = useRouter();
+const authStore = useAuthStore();
 
 const handleSubmit = async (e) => {
   e.preventDefault();
@@ -21,8 +23,8 @@ const handleSubmit = async (e) => {
       password: password.value,
     });
 
-    localStorage.setItem("token", token);
-    console.log("Token:", token);
+    authStore.setToken(token);
+    console.log("Token after login:", token);
     router.push("/");
   } catch (err) {
     error.value = err.message || err;
