@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.primary-text {
+  @apply text-lg font-semibold text-slate-200;
+}
+
+.secondary-text {
+  @apply text-sm text-slate-300;
+}
+
+.nav-link {
+  @apply text-sm text-slate-200 font-semibold uppercase tracking-widest;
+}
+.nav-link-hover:hover {
+  @apply text-teal-300 transition duration-150 ease-in-out;
+}
