@@ -1,12 +1,16 @@
-<script setup></script>
+<script setup>
+import { RouterLink } from "vue-router";
+</script>
 
 <template>
-  <footer class="m-4 bg-slate-600 rounded-lg shadow-lg">
+  <footer class="sm:m-4 bg-secondary sm:rounded-lg shadow-lg">
     <div
       class="w-full mx-auto max-w-screen-xl p-4 flex flex-col items-center lg:flex-row lg:items-center lg:justify-between"
     >
-      <p class="text-sm text-slate-200">Logo soon!</p>
-      <span class="text-sm text-slate-200">© 2025. You can copy whatever you want.</span>
+      <div class="flex items-center nav-link-no-color text-stone-900 px-6">
+        <RouterLink to="/">Logo Soon!</RouterLink>
+      </div>
+      <span class="text-sm text-stone-900">© 2025. You can copy whatever you want.</span>
     </div>
   </footer>
 </template>
