@@ -2,7 +2,9 @@
 
 This project is a technical test for a job interview. It is a landing page with register/login functionality built using Vue.js, Vue Router, Pinia, and Vitest for unit testing. The project is set up to run in a Docker container. 
 
-Pending: Add info: Tailwind.
+Pending to add info about: 
+- Tailwind.
+- Axios for JWT Token administration.
 
 ## Setup
 
