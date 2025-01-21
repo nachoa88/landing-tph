@@ -2,24 +2,31 @@
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 import { authService } from "@/services/authService";
+import { useAuthStore } from "@/stores/useAuthStore";
 import RegisterForm from "@/components/auth/RegisterForm.vue";
 
 const error = ref(null);
 const loading = ref(false);
 const router = useRouter();
+const authStore = useAuthStore();
 
 const handleRegister = async ({ email, password }) => {
   loading.value = true;
   error.value = null;
 
   try {
-    await authService.register({
+    const { token, id } = await authService.register({
       email: email,
       password: password,
     });
-    router.push("/login");
+    // If token is returned, set it in the store, auto-login and redirect to home
+    if (token) {
+      authStore.setToken(token);
+      console.log("User registered successfully with ID:", id);
+      router.push("/");
+    }
   } catch (err) {
-    error.value = err.message || err;
+    error.value = err.message || "Registration failed. Please try again.";
   } finally {
     loading.value = false;
   }
