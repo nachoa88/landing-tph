@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from "vue";
 import { useRouter } from "vue-router";
+import { authService } from "@/services/authService";
 import RegisterForm from "@/components/auth/RegisterForm.vue";
 
 const error = ref(null);
