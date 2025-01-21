@@ -3,6 +3,7 @@ import { ref } from "vue";
 import { RouterLink } from "vue-router";
 import { useRouter } from "vue-router";
 import { useAuthStore } from "@/stores/useAuthStore";
+import Logo from "../ui/Logo.vue";
 import BaseButton from "@/components/ui/BaseButton.vue";
 
 const isMenuOpen = ref(false);
@@ -31,9 +32,11 @@ const handleLogout = () => {
     <nav class="flex sm:m-4 bg-secondary sm:rounded-lg shadow-lg">
       <div class="w-full p-4 sm:py-2 mx-auto max-w-screen-xl flex items-center justify-between">
         <!-- Logo -->
-        <div class="nav-link">
-          <RouterLink to="/">Logo Soon!</RouterLink>
-        </div>
+
+          <RouterLink to="/">
+            <Logo />
+          </RouterLink>
+    
 
         <!-- Desktop Navigation Links -->
         <div class="hidden sm:flex items-center gap-6">
