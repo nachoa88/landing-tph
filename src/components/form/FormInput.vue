@@ -33,21 +33,7 @@ defineEmits(["update:modelValue"]);
       :id="id"
       :required="required"
       :placeholder="placeholder"
-      class="form-input"
+      class="form-input-base"
     />
   </div>
 </template>
-
-<style scoped>
-.form-group {
-  @apply mb-5;
-}
-
-.form-label {
-  @apply block mb-2 nav-link-no-color text-stone-900;
-}
-
-.form-input {
-  @apply shadow-sm text-stone-900 text-sm rounded-lg bg-stone-100 border-2 border-emerald-700 outline-none focus:border-emerald-500 block w-full p-2.5;
-}
-</style>

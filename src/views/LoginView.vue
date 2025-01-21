@@ -35,7 +35,9 @@ const handleLogin = async ({ email, password }) => {
   <section class="flex justify-center items-center w-full h-auto">
     <div class="w-full max-w-sm">
       <LoginForm :loading="loading" @submit="handleLogin" />
-      <p v-if="error" class="mt-4 nav-link-no-color text-red-500 text-center">{{ error }}</p>
+      <p v-if="error" class="mt-4 nav-link-no-color text-red-500 text-center">
+        {{ error }}
+      </p>
     </div>
   </section>
 </template>
