@@ -6,5 +6,8 @@ export const authService = {
     console.log("Login response:", response);
     return response.token;
   },
-  // Register
+  async register(userData) {
+    const response = await api.post("/players", userData);
+    return response.data;
+  },
 };
