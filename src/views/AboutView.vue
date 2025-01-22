@@ -2,14 +2,16 @@
 import SectionTitle from "@/components/typography/SectionTitle.vue";
 import CallToAction from "@/components/home/CallToAction.vue";
 import SectionSubtitle from "@/components/typography/SectionSubtitle.vue";
+import MemberCard from "@/components/about/MemberCard.vue";
+import WhereAreWe from "@/components/about/WhereAreWe.vue";
 
 const teamMembers = [
   { name: "Jordi Mas", role: "Product Owner" },
-  { name: "Alba Ortiz", role: "QA Analyst" },
-  { name: "Pere Rives", role: "Administrative & Backoffice Assistant" },
-  { name: "Jordi Mas", role: "Product Owner" },
-  { name: "Alba Ortiz", role: "QA Analyst" },
-  { name: "Pere Rives", role: "Administrative & Backoffice Assistant" },
+  { name: "Albert Prats", role: "UX/UI Designer" },
+  { name: "Alba Ortiz", role: "Data Analyst" },
+  { name: "Pere Rives", role: "QA Analyst" },
+  { name: "Joe Doe", role: "Full Stack Developer" },
+  { name: "Juan Perez", role: "Full Stack Developer" },
 ];
 </script>
 
@@ -20,6 +22,7 @@ const teamMembers = [
         <div class="mt-10 sm:mt-20 text-center">
           <SectionTitle text="Get no know us," highlight="Restore The Balance" />
         </div>
+        <!-- This is not being transformed to component because I'll try to use the Overview component here as well. -->
         <div class="px-5 sm:px-10 md:px-20 py-5 md:py-10">
           <p class="text-stone-900 text-base md:text-lg my-2">
             At EcoTrail, our mission is to redefine sustainability for businesses by delivering innovative solutions to
@@ -55,26 +58,13 @@ const teamMembers = [
           </p>
         </div>
       </div>
-      <!--Members -->
+
       <SectionSubtitle text="Meet the Team behind" highlight="EcoTrail" />
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 my-12 px-4">
-        <div v-for="member in teamMembers" :key="member.name" class="p-6 bg-emerald-700/10 rounded-lg text-center">
-          <div class="mb-4">
-            <div class="h-24 w-24 rounded-full bg-emerald-700/30 mx-auto mb-2"></div>
-            <h3 class="text-xl font-semibold text-stone-900">{{ member.name }}</h3>
-            <p class="text-stone-700">{{ member.role }}</p>
-          </div>
-        </div>
+        <MemberCard v-for="member in teamMembers" :key="member.name" :member="member" />
       </div>
-
-      <!--Where are we? -->
-      <SectionSubtitle text="Where" highlight="Are We?" />
-      <div class="flex justify-center">
-        <div class="opacity-70 hover:opacity-100 transition-opacity">
-          <div class="h-72 w-96 rounded-xl bg-emerald-700/30 animate-pulse mb-2">Here will go a map of the world</div>
-        </div>
-      </div>
-
+      
+      <WhereAreWe />
       <CallToAction />
     </div>
   </section>
