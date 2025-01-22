@@ -13,11 +13,12 @@ const stats = [
 </script>
 
 <template>
+  <!-- If i have time I'll create subcomponents -->
   <div class="grid px-4 lg:px-8 grid-cols-1 lg:grid-cols-12 gap-x-8 gap-y-14 sm:gap-y-20">
     <!-- Left Column: Text Content -->
     <div class="lg:col-span-7 lg:pr-8 flex flex-col justify-center">
       <div class="lg:max-w-lg">
-        <SectionTitle main-text="Track your carbon footprint" highlight="without the complexity" />
+        <SectionTitle text="Track your carbon footprint" highlight="without the complexity" />
         <p class="mt-6 text-lg leading-8 text-stone-700">
           Transform your business's environmental impact with real-time carbon tracking, actionable insights, and
           automated sustainability reporting. All in one powerful platform.

@@ -1,6 +1,6 @@
 <script setup>
 import SectionSubtitle from "@/components/typography/SectionSubtitle.vue";
-import HeroSection from "@/components/home/HeroSection.vue";
+import HeroSection from "@/components/home/Hero.vue";
 import Features from "@/components/home/Features.vue";
 import Overview from "@/components/home/Overview.vue";
 import HowItWorks from "@/components/home/HowItWorks.vue";
@@ -16,7 +16,7 @@ import Testimonials from "@/components/home/Testimonials.vue";
         <div class="mt-10 sm:mt-20">
           <SectionSubtitle
             text="Your all-in-one platform to measure, reduce, and offset your company's carbon footprint."
-            highlight-text="Ready to make a difference?"
+            highlight="Ready to make a difference?"
           />
         </div>
         <Overview />
