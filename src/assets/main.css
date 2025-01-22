@@ -1,35 +1,116 @@
-@import './base.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  font-weight: normal;
+/* Global selection styles */
+::selection {
+  background-color: #16a34a; /* emerald-600 */
+  color: #f5f5f4; /* stone-100 text */
 }
 
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-  padding: 3px;
-}
-
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
-}
-
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
+@layer components {
+  .bg-primary {
+    @apply bg-stone-300;
   }
 
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
+  .bg-secondary {
+    @apply bg-emerald-700/20;
   }
+
+  .primary-text {
+    @apply text-lg font-semibold text-stone-900;
+  }
+
+  .secondary-text {
+    @apply text-sm text-stone-700;
+  }
+
+  /* Base nav styles */
+  .nav-link {
+    @apply text-sm text-stone-900 font-semibold uppercase tracking-widest;
+  }
+
+  .nav-link-no-color {
+    @apply text-sm font-semibold uppercase tracking-widest;
+  }
+
+  .nav-link-hover:hover {
+    @apply text-emerald-700 transition duration-300 ease-in-out;
+  }
+
+  /* Base form styles */
+  .form-base {
+    @apply p-6 rounded-lg shadow-md bg-emerald-700/30;
+  }
+
+  .form-group {
+    @apply mb-5;
+  }
+
+  .form-label {
+    @apply block mb-2 nav-link-no-color text-stone-900;
+  }
+
+  .form-input-base {
+    @apply shadow-sm text-stone-900 text-sm rounded-lg bg-stone-100 border-2 border-emerald-700 outline-none focus:border-emerald-500 block w-full p-2.5;
+  }
+
+  .form-checkbox-base {
+    @apply w-4 h-4 rounded bg-stone-100 border-2 border-emerald-700 outline-none ring-1 ring-emerald-700 focus:ring-emerald-500;
+  }
+
+  .form-checkbox-group {
+    @apply flex items-start my-5;
+  }
+
+  .form-checkbox-wrapper {
+    @apply flex items-center h-5;
+  }
+
+  .form-title {
+    @apply text-2xl font-normal text-stone-900 text-center mt-2 mb-6;
+  }
+
+  .form-title-highlight {
+    @apply font-bold underline decoration-4 underline-offset-2 decoration-green-400;
+  }
+
+  /* Para CTAs y elementos destacados */
+  .accent-color {
+    @apply bg-emerald-700 text-stone-100 hover:bg-emerald-800 transition-colors;
+  }
+
+  /* Para secciones destacadas */
+  .highlight-section {
+    @apply bg-gradient-to-br from-stone-200 to-stone-300;
+  }
+
+  /* Para bordes y separadores */
+  .border-accent {
+    @apply border-emerald-700/30;
+  }
+
+  /*ALTERNATIVE COLOR PALETTE, JUST IN CASE*/
+  /* .bg-primary {
+    @apply bg-emerald-800;
+  }
+
+  .bg-secondary {
+    @apply bg-emerald-300/30;
+  }
+
+  .primary-text {
+    @apply text-lg font-semibold text-slate-200;
+  }
+
+  .secondary-text {
+    @apply text-sm text-slate-300;
+  }
+
+  .nav-link {
+    @apply text-sm text-slate-200 font-semibold uppercase tracking-widest;
+  }
+  .nav-link-hover:hover {
+    @apply text-emerald-950 transition duration-300 ease-in-out;
+  } */
 }
