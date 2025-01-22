@@ -6,8 +6,8 @@ defineProps({
 </script>
 
 <template>
-  <h1 class="text-stone-900 my-4 md:my-8 text-3xl md:text-4xl lg:text-5xl font-semibold text-center">
+  <h1 class="text-4xl sm:text-6xl font-bold tracking-tight text-stone-900">
     {{ mainText }}
-    <span v-if="highlight" class="text-emerald-700 font-extrabold">{{ highlight }}</span>
+    <span v-if="highlight" class="text-emerald-700">{{ highlight }}</span>
   </h1>
 </template>

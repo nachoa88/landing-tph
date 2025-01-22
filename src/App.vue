@@ -6,14 +6,12 @@ import TheFooter from "./components/layout/TheFooter.vue";
 
 <template>
   <div class="flex flex-col min-h-screen bg-primary">
-    <header>
+    <header class="relative z-10">
       <TheNavbar />
     </header>
-
-    <main class="flex flex-1 m-4 bg-secondary rounded-lg shadow-lg">
+    <main class="flex flex-1 my-4 sm:m-4 relative bg-secondary sm:rounded-lg shadow-lg">
       <RouterView />
     </main>
-
     <TheFooter />
   </div>
 </template>
