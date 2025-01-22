@@ -3,6 +3,7 @@ import { ref } from "vue";
 import { RouterLink } from "vue-router";
 import { useRouter } from "vue-router";
 import { useAuthStore } from "@/stores/useAuthStore";
+import Logo from "../ui/Logo.vue";
 import BaseButton from "@/components/ui/BaseButton.vue";
 
 const isMenuOpen = ref(false);
@@ -28,50 +29,54 @@ const handleLogout = () => {
 
 <template>
   <div class="relative">
-    <nav class="flex items-center justify-between p-4 sm:p-2 sm:m-4 bg-secondary sm:rounded-lg shadow-lg">
-      <!-- Logo -->
-      <div class="nav-link">
-        <RouterLink to="/">Logo Soon!</RouterLink>
-      </div>
+    <nav class="flex sm:m-4 bg-secondary sm:rounded-lg shadow-lg">
+      <div class="w-full p-4 sm:py-2 mx-auto max-w-screen-xl flex items-center justify-between">
+        <!-- Logo -->
 
-      <!-- Desktop Navigation Links -->
-      <div class="hidden sm:flex items-center gap-6">
-        <RouterLink v-for="link in navLinks" :key="link.to" :to="link.to" class="nav-link nav-link-hover">
-          {{ link.text }}
-        </RouterLink>
-      </div>
+          <RouterLink to="/">
+            <Logo />
+          </RouterLink>
+    
 
-      <!-- Login / Logout Buttons -->
-      <div class="flex items-center gap-4">
-        <BaseButton v-if="!authStore.isLoggedIn" to="/login" variant="primary">Log in</BaseButton>
-        <BaseButton v-else variant="danger" :onClick="handleLogout">Log out</BaseButton>
+        <!-- Desktop Navigation Links -->
+        <div class="hidden sm:flex items-center gap-6">
+          <RouterLink v-for="link in navLinks" :key="link.to" :to="link.to" class="nav-link nav-link-hover">
+            {{ link.text }}
+          </RouterLink>
+        </div>
 
-        <!-- Mobile Menu Button -->
-        <button
-          @click="toggleMenu"
-          class="sm:hidden inline-flex items-center justify-center p-2 rounded-md text-emerald-700 hover:text-emerald-800 transition-colors"
-          type="button"
-          aria-controls="mobile-menu"
-          :aria-expanded="isMenuOpen"
-        >
-          <span class="sr-only">{{ isMenuOpen ? "Close menu" : "Open menu" }}</span>
-          <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-            <path
-              v-show="!isMenuOpen"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M4 6h16M4 12h16M4 18h16"
-            />
-            <path
-              v-show="isMenuOpen"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M6 18L18 6M6 6l12 12"
-            />
-          </svg>
-        </button>
+        <!-- Login / Logout Buttons -->
+        <div class="flex items-center gap-4">
+          <BaseButton v-if="!authStore.isLoggedIn" to="/login" variant="primary">Log in</BaseButton>
+          <BaseButton v-else variant="danger" :onClick="handleLogout">Log out</BaseButton>
+
+          <!-- Mobile Menu Button -->
+          <button
+            @click="toggleMenu"
+            class="sm:hidden inline-flex items-center justify-center p-2 rounded-md text-emerald-700 hover:text-emerald-800 transition-colors"
+            type="button"
+            aria-controls="mobile-menu"
+            :aria-expanded="isMenuOpen"
+          >
+            <span class="sr-only">{{ isMenuOpen ? "Close menu" : "Open menu" }}</span>
+            <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+              <path
+                v-show="!isMenuOpen"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+              <path
+                v-show="isMenuOpen"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
+        </div>
       </div>
     </nav>
 
