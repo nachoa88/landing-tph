@@ -1,15 +1,9 @@
 <script setup>
-import { ref, computed } from "vue";
+import { useForm } from "vee-validate";
+import { carbonCalculatorSchema } from "@/validations/carbonCalculatorValidation";
 import FormInput from "../form/FormInput.vue";
 import BaseForm from "../form/BaseForm.vue";
 import BaseButton from "../ui/BaseButton.vue";
-
-const formData = ref({
-  electricity: 0,
-  gas: 0,
-  carKm: 0,
-  flights: 0,
-});
 
 // Conversion factors for different activities, these are approximate values
 const CONVERSION_FACTORS = {
@@ -19,24 +13,31 @@ const CONVERSION_FACTORS = {
   flights: 0.09, // kg CO2e for km
 };
 
-const totalEmissions = computed(() => {
-  return Object.keys(formData.value).reduce((total, key) => {
-    return total + formData.value[key] * CONVERSION_FACTORS[key];
-  }, 0);
-});
-
-const resetForm = () => {
-  formData.value = {
+// Usar VeeValidate
+const { handleSubmit, values, resetForm } = useForm({
+  validationSchema: carbonCalculatorSchema,
+  initialValues: {
     electricity: 0,
     gas: 0,
     carKm: 0,
     flights: 0,
-  };
+  },
+});
+
+// Calculate Total Emissions based on form values.
+const calculateTotalEmissions = (formValues) => {
+  return Object.keys(formValues).reduce((total, key) => {
+    return total + formValues[key] * CONVERSION_FACTORS[key];
+  }, 0);
 };
 
-const calculateImpact = () => {
-  // TODO: implement the calculation logic, for now we just log the total emissions.
-  console.log("Total emissions:", totalEmissions.value.toFixed(2), "kg CO2e");
+const calculateImpact = handleSubmit((formValues) => {
+  const totalEmissions = calculateTotalEmissions(formValues);
+  console.log("Total emissions:", totalEmissions.toFixed(2), "kg CO2e");
+});
+
+const handleReset = () => {
+  resetForm();
 };
 </script>
 
@@ -45,7 +46,7 @@ const calculateImpact = () => {
     <BaseForm title="Calculate your" subtitle="Carbon Footprint" @submit="calculateImpact">
       <!-- Electricity -->
       <FormInput
-        v-model="formData.electricity"
+        name="electricity"
         label="Monthly Electricity Consumption (kWh)"
         type="number"
         id="electricity"
@@ -53,46 +54,31 @@ const calculateImpact = () => {
         required
       />
       <!-- Gas -->
-      <FormInput
-        v-model="formData.gas"
-        label="Monthly Gas Consumption (kWh)"
-        type="number"
-        id="gas"
-        placeholder="Enter kWh"
-        required
-      />
+      <FormInput name="gas" label="Monthly Gas Consumption (kWh)" type="number" id="gas" placeholder="Enter kWh" />
 
       <!-- Car Travel -->
-      <FormInput
-        v-model="formData.carKm"
-        label="Monthly Car Travel (km)"
-        type="number"
-        id="carKm"
-        placeholder="Enter kilometers"
-        required
-      />
+      <FormInput name="carKm" label="Monthly Car Travel (km)" type="number" id="carKm" placeholder="Enter kilometers" />
 
       <!-- Flights -->
       <FormInput
-        v-model="formData.flights"
+        name="flights"
         label="Monthly Flights (km)"
         type="number"
         id="flights"
         placeholder="Enter kilometers"
-        required
       />
 
       <!-- Results -->
       <div class="m-4 sm:m-8 p-2 sm:p-4 bg-emerald-700 rounded-lg text-center">
         <h3 class="text-lg font-semibold text-stone-100 mb-2">Your Carbon Footprint</h3>
-        <p class="text-3xl font-bold text-stone-200">{{ totalEmissions.toFixed(2) }} kg CO2e</p>
+        <p class="text-3xl font-bold text-stone-200">{{ calculateTotalEmissions(values).toFixed(2) }} kg CO2e</p>
         <p class="text-xs text-stone-200 mt-2">This is an approximate calculation based on average emission factors.</p>
       </div>
 
       <!-- Actions -->
       <div class="flex flex-col sm:flex-row justify-center gap-4">
         <BaseButton type="submit" variant="primary">Calculate</BaseButton>
-        <BaseButton type="button" @click="resetForm" variant="danger">Reset</BaseButton>
+        <BaseButton type="button" @click="handleReset" variant="danger">Reset</BaseButton>
       </div>
     </BaseForm>
   </div>

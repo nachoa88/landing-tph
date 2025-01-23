@@ -6,11 +6,12 @@ This project is a technical test for a job interview. It is a responsive landing
 
 ## Features
 
-- **Responsive Design:** Built with Tailwind CSS for efficient and customizable styling.
-- **Authentication:** Includes login and registration using the [Reqres API](https://reqres.in).
-- **State Management:** Pinia is used for reactive and centralized state management.
-- **Testing:** Unit tests written with Vitest to ensure code quality and reliability.
-- **JWT Token Handling:** Axios is used for API calls and managing authentication tokens.
+- **Responsive Design:** Built with Tailwind CSS for efficient and customizable styling (needs a refactor).
+- **Authentication:** Includes login and registration using the [Reqres API](https://reqres.in) and a section EcoTracker exclusive for authenticated users.
+- **State Management:** Pinia is the state management library recommended for Vue 3. It is used to handle authentication state centrally, storing the user's token and synchronizing it with localStorage. This allows reactive state sharing across the application.
+- **Form Validation:** VeeValidate + Yup tools used for form validation. VeeValidate is integrated into form components, and Yup is used to define reusable validation schemas. These ensure consistency across forms (e.g., login and register), validating fields such as password length (minimum 6 characters) and email format.
+- **JWT Token Handling:** Axios used for making HTTP requests to the Reqres API. It is configured through a custom client (api.js) that includes request and response interceptors. These interceptors automatically add the token to request headers and handle common errors like 401, 404, and 500 responses.
+- **TO-DO: Testing:** Unit tests written with Vitest to ensure code quality and reliability.
 
 ---
 
@@ -18,10 +19,11 @@ This project is a technical test for a job interview. It is a responsive landing
 
 ### Reqres API Endpoints
 
-1. **Login Endpoint**  
-   - URL: `https://reqres.in/api/login`  
-   - Method: `POST`  
-   - Request Payload:  
+1. **Login Endpoint**
+
+   - URL: `https://reqres.in/api/login`
+   - Method: `POST`
+   - Request Payload:
      ```json
      {
        "email": "eve.holt@reqres.in",
@@ -35,10 +37,10 @@ This project is a technical test for a job interview. It is a responsive landing
      }
      ```
 
-2. **Register Endpoint**  
-   - URL: `https://reqres.in/api/register`  
-   - Method: `POST`  
-   - Request Payload:  
+2. **Register Endpoint**
+   - URL: `https://reqres.in/api/register`
+   - Method: `POST`
+   - Request Payload:
      ```json
      {
        "email": "eve.holt@reqres.in",
@@ -58,12 +60,12 @@ This project is a technical test for a job interview. It is a responsive landing
 ## Technologies Used
 
 1. **Vue 3:** A progressive JavaScript framework for building user interfaces.
-2. **Vue Router:** Handles navigation between pages (e.g., Login, Register, Home).
+2. **Vue Router:** Handles navigation between pages (e.g., Home, About, Login, Register).
 3. **Pinia:** The recommended state management library for Vue 3, enabling easy and reactive state management.
 4. **Axios:** A promise-based HTTP client used for API requests and handling JWT tokens efficiently.
 5. **Tailwind CSS:** A utility-first CSS framework for rapid UI development.
-6. **Vitest:** A fast and lightweight testing framework designed for modern JavaScript applications.
-7. **Docker:** Used to containerize the application for easy deployment and consistent environment setup.
+6. **Docker:** Used to containerize the application for easy deployment and consistent environment setup.
+7. **TO-DO: Vitest:** A fast and lightweight testing framework designed for modern JavaScript applications.
 
 ---
 
@@ -76,8 +78,8 @@ This project is a technical test for a job interview. It is a responsive landing
 3. Access container's terminal: `docker exec -it practice sh`.
 4. Install dependencies and start dev server: `npm install` and `npm run dev`.
 
-
 ### Without Docker (Using Node.js 23)
+
 1. Clone the repository, and enter to the project folder.
 2. Install dependencies and start dev server: `npm install` and `npm run dev`.
 
@@ -87,4 +89,4 @@ The application should be visible in: `http://localhost:5173`
 
 ## Testing
 
-TODO: tests --> `npm run test`
+### TODO: tests --> `npm run test`
