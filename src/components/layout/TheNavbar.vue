@@ -32,17 +32,16 @@ const handleLogout = () => {
     <nav class="flex sm:m-4 bg-secondary sm:rounded-lg shadow-lg">
       <div class="w-full p-4 sm:py-2 mx-auto max-w-screen-xl flex items-center justify-between">
         <!-- Logo -->
-
         <RouterLink to="/">
           <Logo />
         </RouterLink>
 
         <!-- Desktop Navigation Links -->
-        <div class="hidden sm:flex items-center gap-6">
-          <RouterLink v-for="link in navLinks" :key="link.to" :to="link.to" class="nav-link nav-link-hover">
+        <div class="hidden sm:flex items-center gap-12">
+          <RouterLink v-for="link in navLinks" :key="link.to" :to="link.to" class="nav-link nav-link-hover px-4 py-2">
             {{ link.text }}
           </RouterLink>
-          <RouterLink v-if="authStore.isLoggedIn" to="/ecotracker" class="nav-link nav-link-hover">
+          <RouterLink v-if="authStore.isLoggedIn" to="/ecotracker" class="nav-link nav-link-hover px-4 py-2">
             EcoTracker
           </RouterLink>
         </div>
@@ -90,15 +89,16 @@ const handleLogout = () => {
           :key="link.to"
           :to="link.to"
           class="px-4 py-2 my-1 nav-link-no-color text-stone-100 border-l-4 border-green-400"
-          @click="isMenuOpen = false"
+          @click.native="toggleMenu"
         >
           {{ link.text }}
         </RouterLink>
-        <span class="border-y border-green-400 my-2"></span>
+        <span v-if="authStore.isLoggedIn" class="border-y border-green-400 my-2"></span>
         <RouterLink
           v-if="authStore.isLoggedIn"
           to="/ecotracker"
           class="px-4 py-2 my-1 nav-link-no-color text-stone-100 border-l-4 border-green-400"
+          @click.native="toggleMenu"
         >
           EcoTracker
         </RouterLink>

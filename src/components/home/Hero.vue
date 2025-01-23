@@ -43,10 +43,25 @@ const stats = [
           <a
             v-if="!authStore.isLoggedIn"
             href="/about"
-            class="text-base font-semibold leading-6 text-stone-900 hover:text-emerald-700 transition-colors flex items-center justify-center"
+            class="nav-link leading-6 text-stone-900 hover:text-emerald-700 transition-colors flex items-center justify-center"
           >
             <!-- Maybe change to "Schedule a Demo" or something like that. -->
-            Learn more <span aria-hidden="true">→</span>
+            Learn more
+            <svg
+              class="rtl:rotate-180 w-3.5 h-3.5 ms-2"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 14 10"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M1 5h12m0 0L9 1m4 4L9 9"
+              />
+            </svg>
           </a>
         </div>
 
