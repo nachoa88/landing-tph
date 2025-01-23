@@ -41,8 +41,10 @@ const stats = [
         <!-- CTA Buttons -->
         <div class="mt-8 flex flex-col sm:flex-row gap-6">
           <BaseButton v-if="!authStore.isLoggedIn" to="/register" variant="primary">Start Free Trial</BaseButton>
-          <BaseButton v-else to="/ecotracker" variant="primary">Go to Dashboard</BaseButton>
-          <ArrowButton v-if="!authStore.isLoggedIn" to="/about" variant="primary">Learn more</ArrowButton>
+          <BaseButton v-else to="/ecotracker" variant="primary" class="justify-center">Go to Dashboard</BaseButton>
+          <ArrowButton v-if="!authStore.isLoggedIn" to="/about" variant="primary" class="justify-center"
+            >Learn more</ArrowButton
+          >
         </div>
 
         <!-- Stats -->
