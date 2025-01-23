@@ -31,7 +31,9 @@ const aboutContent = [
         <div class="text-center">
           <SectionTitle text="Get to know us," highlight="Restore The Balance" />
         </div>
-        <ContentSection :content="aboutContent" />
+        <div class="px-5 sm:px-10 md:px-20 py-5 md:py-10">
+          <ContentSection :content="aboutContent" />
+        </div>
       </div>
 
       <SectionSubtitle text="Meet the Team behind" highlight="EcoTrail" />
