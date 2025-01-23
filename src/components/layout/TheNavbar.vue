@@ -33,15 +33,17 @@ const handleLogout = () => {
       <div class="w-full p-4 sm:py-2 mx-auto max-w-screen-xl flex items-center justify-between">
         <!-- Logo -->
 
-          <RouterLink to="/">
-            <Logo />
-          </RouterLink>
-    
+        <RouterLink to="/">
+          <Logo />
+        </RouterLink>
 
         <!-- Desktop Navigation Links -->
         <div class="hidden sm:flex items-center gap-6">
           <RouterLink v-for="link in navLinks" :key="link.to" :to="link.to" class="nav-link nav-link-hover">
             {{ link.text }}
+          </RouterLink>
+          <RouterLink v-if="authStore.isLoggedIn" to="/ecotracker" class="nav-link nav-link-hover">
+            EcoTracker
           </RouterLink>
         </div>
 
@@ -91,6 +93,14 @@ const handleLogout = () => {
           @click="isMenuOpen = false"
         >
           {{ link.text }}
+        </RouterLink>
+        <span class="border-y border-green-400 my-2"></span>
+        <RouterLink
+          v-if="authStore.isLoggedIn"
+          to="/ecotracker"
+          class="px-4 py-2 my-1 nav-link-no-color text-stone-100 border-l-4 border-green-400"
+        >
+          EcoTracker
         </RouterLink>
       </div>
     </div>
