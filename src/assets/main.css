@@ -55,6 +55,10 @@
     @apply shadow-sm text-stone-900 text-sm rounded-lg bg-stone-100 border-2 border-emerald-700 outline-none focus:border-emerald-500 block w-full p-2.5;
   }
 
+  .form-input-error {
+    @apply border-red-500 focus:border-red-500;
+  }
+
   .form-checkbox-base {
     @apply w-4 h-4 rounded bg-stone-100 border-2 border-emerald-700 outline-none ring-1 ring-emerald-700 focus:ring-emerald-500;
   }

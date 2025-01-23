@@ -1,40 +1,34 @@
 <script setup>
-import { ref } from "vue";
 import { RouterLink } from "vue-router";
+import { useForm } from "vee-validate";
+import { loginSchema } from "@/validations/authValidations";
 import BaseButton from "@/components/ui/BaseButton.vue";
 import FormInput from "@/components/form/FormInput.vue";
 import BaseForm from "@/components/form/BaseForm.vue";
 
-defineProps({
+const emit = defineEmits(["submit"]);
+const props = defineProps({
   loading: {
     type: Boolean,
     default: false,
   },
 });
 
-const emit = defineEmits(["submit"]);
+// Configurations for VeeValidate
+const { handleSubmit, errors } = useForm({
+  validationSchema: loginSchema,
+});
 
-const email = ref("");
-const password = ref("");
-
-const handleSubmit = (e) => {
-  e.preventDefault();
-  emit("submit", { email: email.value, password: password.value });
-};
+// Submit handler validated by VeeValidate
+const onSubmit = handleSubmit(async (values) => {
+  emit("submit", values);
+});
 </script>
 
 <template>
-  <BaseForm title="Log in to" subtitle="your account!" @submit="handleSubmit">
-    <FormInput v-model="email" type="email" id="email" label="Your email" placeholder="name@email.com" required />
-
-    <FormInput
-      v-model="password"
-      type="password"
-      id="password"
-      label="Your password"
-      placeholder="Enter your password"
-      required
-    />
+  <BaseForm title="Log in to" subtitle="your account!" @submit="onSubmit">
+    <FormInput name="email" label="Your email" type="email" placeholder="eve.holt@reqres.in" />
+    <FormInput name="password" label="Your password" type="password" placeholder="cityslicka" />
 
     <div class="form-checkbox-group">
       <div class="form-checkbox-wrapper">
