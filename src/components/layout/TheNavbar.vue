@@ -5,6 +5,7 @@ import { useRouter } from "vue-router";
 import { useAuthStore } from "@/stores/useAuthStore";
 import Logo from "../ui/Logo.vue";
 import BaseButton from "@/components/ui/BaseButton.vue";
+import ArrowButton from "../ui/ArrowButton.vue";
 
 const isMenuOpen = ref(false);
 const authStore = useAuthStore();
@@ -37,7 +38,7 @@ const handleLogout = () => {
         </RouterLink>
 
         <!-- Desktop Navigation Links -->
-        <div class="hidden sm:flex items-center gap-12">
+        <div class="hidden sm:flex items-center gap-6 md:gap-12">
           <RouterLink v-for="link in navLinks" :key="link.to" :to="link.to" class="nav-link nav-link-hover px-4 py-2">
             {{ link.text }}
           </RouterLink>
@@ -49,8 +50,9 @@ const handleLogout = () => {
         <!-- Login / Logout Buttons -->
         <div class="flex items-center gap-4">
           <BaseButton v-if="!authStore.isLoggedIn" to="/login" variant="primary">Log in</BaseButton>
-          <BaseButton v-else variant="danger" :onClick="handleLogout">Log out</BaseButton>
-
+          <div class="hidden sm:block">
+            <ArrowButton v-if="authStore.isLoggedIn" variant="danger" :onClick="handleLogout">Log out</ArrowButton>
+          </div>
           <!-- Mobile Menu Button -->
           <button
             @click="toggleMenu"
@@ -93,15 +95,19 @@ const handleLogout = () => {
         >
           {{ link.text }}
         </RouterLink>
-        <span v-if="authStore.isLoggedIn" class="border-y border-green-400 my-2"></span>
+      </div>
+      <div v-if="authStore.isLoggedIn" class="flex flex-col py-1">
+        <span class="border-y border-green-400 my-2"></span>
         <RouterLink
-          v-if="authStore.isLoggedIn"
           to="/ecotracker"
           class="px-4 py-2 my-1 nav-link-no-color text-stone-100 border-l-4 border-green-400"
           @click.native="toggleMenu"
         >
           EcoTracker
         </RouterLink>
+        <ArrowButton variant="secondary" class="px-4 py-2 my-1 border-l-4 border-green-400" :onClick="handleLogout"
+          >Log out</ArrowButton
+        >
       </div>
     </div>
   </div>

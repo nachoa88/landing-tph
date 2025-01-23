@@ -3,7 +3,9 @@ import { useAuthStore } from "@/stores/useAuthStore";
 import SectionTitle from "@/components/typography/SectionTitle.vue";
 import ContentSection from "@/components/typography/ContentSection.vue";
 import BaseButton from "@/components/ui/BaseButton.vue";
+import ArrowButton from "../ui/ArrowButton.vue";
 import dashboardImage from "@/assets/images/dashboard.webp";
+
 const authStore = useAuthStore();
 
 const guestHeroContent = [
@@ -39,30 +41,8 @@ const stats = [
         <!-- CTA Buttons -->
         <div class="mt-8 flex flex-col sm:flex-row gap-6">
           <BaseButton v-if="!authStore.isLoggedIn" to="/register" variant="primary">Start Free Trial</BaseButton>
-          <BaseButton v-else to="/" variant="primary">Go to Dashboard</BaseButton>
-          <a
-            v-if="!authStore.isLoggedIn"
-            href="/about"
-            class="nav-link leading-6 text-stone-900 hover:text-emerald-700 transition-colors flex items-center justify-center"
-          >
-            <!-- Maybe change to "Schedule a Demo" or something like that. -->
-            Learn more
-            <svg
-              class="rtl:rotate-180 w-3.5 h-3.5 ms-2"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 14 10"
-            >
-              <path
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M1 5h12m0 0L9 1m4 4L9 9"
-              />
-            </svg>
-          </a>
+          <BaseButton v-else to="/ecotracker" variant="primary">Go to Dashboard</BaseButton>
+          <ArrowButton v-if="!authStore.isLoggedIn" to="/about" variant="primary">Learn more</ArrowButton>
         </div>
 
         <!-- Stats -->
