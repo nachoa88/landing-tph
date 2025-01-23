@@ -18,10 +18,8 @@ const props = defineProps({
 </script>
 
 <template>
-  <!-- <div class="px-5 sm:px-10 md:px-20 py-5 md:py-10"> -->
-    <div v-for="(paragraph, index) in content" :key="index" class="mt-6 text-lg leading-8 text-stone-700">
-      <p v-html="paragraph"></p>
-      <Quote v-if="quote && index === quoteIndex" :quote="quote" />
-    </div>
-  <!-- </div> -->
+  <div v-for="(paragraph, index) in content" :key="index" class="mt-6 text-lg leading-8 text-stone-700">
+    <p v-html="paragraph"></p>
+    <Quote v-if="quote && index === quoteIndex" :quote="quote" />
+  </div>
 </template>
