@@ -29,9 +29,11 @@ const aboutContent = [
     <div class="p-0 sm:p-4 max-w-screen-xl mx-auto">
       <div class="relative overflow-hidden bg-gradient-to-b from-stone-100 to-transparent pt-12 sm:pt-24 sm:rounded-lg">
         <div class="text-center">
-          <SectionTitle text="Get no know us," highlight="Restore The Balance" />
+          <SectionTitle text="Get to know us," highlight="Restore The Balance" />
         </div>
-        <ContentSection :content="aboutContent" />
+        <div class="px-5 sm:px-10 md:px-20 py-5 md:py-10">
+          <ContentSection :content="aboutContent" />
+        </div>
       </div>
 
       <SectionSubtitle text="Meet the Team behind" highlight="EcoTrail" />
