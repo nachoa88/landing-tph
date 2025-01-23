@@ -31,6 +31,10 @@ const router = createRouter({
       component: () => import("../views/EcoTrackerView.vue"),
       meta: { requiresAuth: true },
     },
+    {
+      path: "/:pathMatch(.*)*",
+      redirect: "/",
+    },
   ],
 });
 
