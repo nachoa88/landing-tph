@@ -1,7 +1,9 @@
 <script setup>
-defineProps({
-  modelValue: {
-    type: [String, Number],
+import { useField } from "vee-validate";
+
+const props = defineProps({
+  name: {
+    type: String,
     required: true,
   },
   label: {
@@ -12,28 +14,28 @@ defineProps({
     type: String,
     default: "text",
   },
-  id: {
-    type: String,
-    required: true,
-  },
   placeholder: String,
-  required: Boolean,
 });
 
-defineEmits(["update:modelValue"]);
+// UseField from VeeValidate:
+const { value, errorMessage, handleBlur, handleChange } = useField(props.name);
 </script>
 
 <template>
   <div class="form-group">
-    <label :for="id" class="form-label">{{ label }}</label>
+    <label :for="name" class="form-label">{{ label }}</label>
     <input
-      :value="modelValue"
-      @input="$emit('update:modelValue', $event.target.value)"
+      :name="name"
       :type="type"
-      :id="id"
-      :required="required"
+      :id="name"
       :placeholder="placeholder"
-      class="form-input-base"
+      :value="value"
+      @input="handleChange"
+      @blur="handleBlur"
+      :class="['form-input-base', { 'form-input-error': errorMessage }]"
     />
+    <span v-if="errorMessage" class="text-red-700 text-xs uppercase tracking-widest p-1">
+      {{ errorMessage }}
+    </span>
   </div>
 </template>
