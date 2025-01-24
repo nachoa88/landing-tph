@@ -1,6 +1,10 @@
 <script setup>
 import { RouterLink } from "vue-router";
 import Logo from "@/components/ui/Logo.vue";
+
+const scrollToTop = () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+};
 </script>
 
 <template>
@@ -8,7 +12,7 @@ import Logo from "@/components/ui/Logo.vue";
     <div
       class="w-full mx-auto max-w-screen-xl p-4 flex flex-col items-center lg:flex-row lg:items-center lg:justify-between"
     >
-      <RouterLink to="/">
+      <RouterLink to="/" @click="scrollToTop">
         <Logo />
       </RouterLink>
       <div class="flex items-center gap-4 mt-4 lg:mt-0">
