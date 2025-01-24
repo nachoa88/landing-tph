@@ -36,6 +36,14 @@ const router = createRouter({
       redirect: "/",
     },
   ],
+  // Scroll behaviour for Footer and a Sticky button to scroll to top.
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition;
+    } else {
+      return { top: 0, behavior: "smooth" };
+    }
+  },
 });
 
 // Guard to check if user is logged in before accessing some routes.
