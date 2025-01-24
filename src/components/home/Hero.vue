@@ -3,7 +3,9 @@ import { useAuthStore } from "@/stores/useAuthStore";
 import SectionTitle from "@/components/typography/SectionTitle.vue";
 import ContentSection from "@/components/typography/ContentSection.vue";
 import BaseButton from "@/components/ui/BaseButton.vue";
+import ArrowButton from "../ui/ArrowButton.vue";
 import dashboardImage from "@/assets/images/dashboard.webp";
+
 const authStore = useAuthStore();
 
 const guestHeroContent = [
@@ -39,15 +41,10 @@ const stats = [
         <!-- CTA Buttons -->
         <div class="mt-8 flex flex-col sm:flex-row gap-6">
           <BaseButton v-if="!authStore.isLoggedIn" to="/register" variant="primary">Start Free Trial</BaseButton>
-          <BaseButton v-else to="/" variant="primary">Go to Dashboard</BaseButton>
-          <a
-            v-if="!authStore.isLoggedIn"
-            href="/about"
-            class="text-base font-semibold leading-6 text-stone-900 hover:text-emerald-700 transition-colors flex items-center justify-center"
+          <BaseButton v-else to="/ecotracker" variant="primary" class="justify-center">Go to Dashboard</BaseButton>
+          <ArrowButton v-if="!authStore.isLoggedIn" to="/about" variant="primary" class="justify-center"
+            >Learn more</ArrowButton
           >
-            <!-- Maybe change to "Schedule a Demo" or something like that. -->
-            Learn more <span aria-hidden="true">→</span>
-          </a>
         </div>
 
         <!-- Stats -->

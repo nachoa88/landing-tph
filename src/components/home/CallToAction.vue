@@ -1,10 +1,9 @@
 <script setup>
-import BaseButton from '../ui/BaseButton.vue';
-
+import BaseButton from "../ui/BaseButton.vue";
 </script>
 
 <template>
-  <div class="my-12 p-8 bg-gradient-to-br from-emerald-700 to-emerald-900 rounded-lg text-white text-center">
+  <div class="my-12 p-8 bg-gradient-to-br from-emerald-700 to-emerald-900 sm:rounded-lg text-stone-100 text-center">
     <h3 class="text-2xl font-bold mb-4">Ready to Transform Your Environmental Impact?</h3>
     <p class="mb-6 max-w-2xl mx-auto">
       Join over 1,200 companies already making a difference. Start your 30-day free trial today.
