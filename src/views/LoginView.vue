@@ -10,7 +10,7 @@ const loading = ref(false);
 const router = useRouter();
 const authStore = useAuthStore();
 
-const handleLogin = async ({ email, password }) => {
+const handleLogin = async ({ email, password, rememberMe }) => {
   loading.value = true;
   error.value = null;
 
@@ -20,7 +20,7 @@ const handleLogin = async ({ email, password }) => {
       password: password,
     });
 
-    authStore.setToken(token);
+    authStore.setToken(token, rememberMe);
     console.log("Token after login:", token);
     router.push("/");
   } catch (err) {

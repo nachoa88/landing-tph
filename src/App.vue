@@ -2,6 +2,7 @@
 import { RouterView } from "vue-router";
 import TheNavbar from "./components/layout/TheNavbar.vue";
 import TheFooter from "./components/layout/TheFooter.vue";
+import ScrollToTopButton from "./components/ui/ScrollToTopButton.vue";
 </script>
 
 <template>
@@ -13,6 +14,7 @@ import TheFooter from "./components/layout/TheFooter.vue";
       <RouterView />
     </main>
     <TheFooter />
+    <ScrollToTopButton />
   </div>
 </template>
 
