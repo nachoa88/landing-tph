@@ -48,7 +48,7 @@ const stats = [
         </div>
 
         <!-- Stats -->
-        <div class="mt-10 grid grid-cols-3 gap-4">
+        <div class="mt-10 grid grid-cols-3 gap-4 animate-slide-up">
           <div v-for="stat in stats" :key="stat.number" class="border-l-4 border-emerald-700/30 pl-4">
             <div class="text-2xl font-bold text-emerald-700">{{ stat.number }}</div>
             <div class="text-sm font-semibold text-stone-600">{{ stat.text }}</div>
@@ -64,7 +64,7 @@ const stats = [
       </div>
 
       <!-- Trust Badges -->
-      <div class="mt-6 space-y-4">
+      <div class="mt-6 space-y-4 animate-slide-in-right animation-delay-300">
         <p class="nav-link-no-color text-stone-700 text-center">Trusted by leading companies worldwide</p>
         <div class="grid grid-cols-4 gap-4 md:gap-8">
           <div class="flex flex-col items-center justify-center opacity-70 hover:opacity-100 transition-opacity">

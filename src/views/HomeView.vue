@@ -22,7 +22,7 @@ const homeQuote =
     <div class="p-0 sm:p-4 max-w-screen-xl mx-auto">
       <div class="relative overflow-hidden bg-gradient-to-b from-stone-100 to-transparent pt-12 sm:pt-24 sm:rounded-lg">
         <Hero />
-        <div class="mt-10 sm:mt-20">
+        <div class="mt-8 sm:mt-16 animate-fade-in animation-delay-700">
           <SectionSubtitle
             text="Your all-in-one platform to measure, reduce, and offset your company's carbon footprint."
             highlight="Ready to make a difference?"
