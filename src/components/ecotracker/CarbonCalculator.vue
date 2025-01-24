@@ -49,24 +49,15 @@ const handleReset = () => {
         name="electricity"
         label="Monthly Electricity Consumption (kWh)"
         type="number"
-        id="electricity"
         placeholder="Enter kWh"
         required
       />
       <!-- Gas -->
-      <FormInput name="gas" label="Monthly Gas Consumption (kWh)" type="number" id="gas" placeholder="Enter kWh" />
-
+      <FormInput name="gas" label="Monthly Gas Consumption (kWh)" type="number" placeholder="Enter kWh" />
       <!-- Car Travel -->
-      <FormInput name="carKm" label="Monthly Car Travel (km)" type="number" id="carKm" placeholder="Enter kilometers" />
-
+      <FormInput name="carKm" label="Monthly Car Travel (km)" type="number" placeholder="Enter kilometers" />
       <!-- Flights -->
-      <FormInput
-        name="flights"
-        label="Monthly Flights (km)"
-        type="number"
-        id="flights"
-        placeholder="Enter kilometers"
-      />
+      <FormInput name="flights" label="Monthly Flights (km)" type="number" placeholder="Enter kilometers" />
 
       <!-- Results -->
       <div class="m-4 sm:m-8 p-2 sm:p-4 bg-emerald-700 rounded-lg text-center">

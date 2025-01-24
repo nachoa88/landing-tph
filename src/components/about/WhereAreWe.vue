@@ -1,6 +1,6 @@
 <script setup>
 import SectionSubtitle from "@/components/typography/SectionSubtitle.vue";
-import mapImage from "@/assets/images/map.png";
+import mapImage from "@/assets/images/map.webp";
 </script>
 
 <template>

@@ -1,9 +1,20 @@
 <script setup>
 import { useAuthStore } from "@/stores/useAuthStore";
 import SectionTitle from "@/components/typography/SectionTitle.vue";
+import ContentSection from "@/components/typography/ContentSection.vue";
 import BaseButton from "@/components/ui/BaseButton.vue";
+import ArrowButton from "../ui/ArrowButton.vue";
 import dashboardImage from "@/assets/images/dashboard.webp";
+
 const authStore = useAuthStore();
+
+const guestHeroContent = [
+  "Transform your business's environmental impact with real-time carbon tracking, actionable insights, and automated sustainability reporting. All in one powerful platform.",
+];
+
+const userHeroContent = [
+  "Continue driving your sustainability goals with real-time tracking, actionable insights, and automated reports. Your journey to a greener future starts here.",
+];
 
 const stats = [
   { number: "40%", text: "Average Carbon Reduction" },
@@ -18,23 +29,22 @@ const stats = [
     <!-- Left Column: Text Content -->
     <div class="lg:col-span-7 lg:pr-8 flex flex-col justify-center">
       <div class="lg:max-w-lg">
-        <SectionTitle text="Track your carbon footprint" highlight="without the complexity" />
-        <p class="mt-6 text-lg leading-8 text-stone-700">
-          Transform your business's environmental impact with real-time carbon tracking, actionable insights, and
-          automated sustainability reporting. All in one powerful platform.
-        </p>
+        <SectionTitle
+          v-if="!authStore.isLoggedIn"
+          text="Track your carbon footprint"
+          highlight="without the complexity"
+        />
+        <SectionTitle v-else text="Welcome back, let's make" highlight="an impact together!" />
+        <ContentSection v-if="!authStore.isLoggedIn" :content="guestHeroContent" />
+        <ContentSection v-else :content="userHeroContent" />
 
         <!-- CTA Buttons -->
-        <div class="mt-8 flex gap-x-6">
-          <BaseButton v-if="!authStore.isLoggedIn" to="/login" variant="primary">Start Free Trial</BaseButton>
-          <BaseButton v-else to="/" variant="primary">Go to Dashboard</BaseButton>
-          <button
-            v-if="!authStore.isLoggedIn"
-            class="text-base font-semibold leading-6 text-stone-900 hover:text-emerald-700 transition-colors"
+        <div class="mt-8 flex flex-col sm:flex-row gap-6">
+          <BaseButton v-if="!authStore.isLoggedIn" to="/register" variant="primary">Start Free Trial</BaseButton>
+          <BaseButton v-else to="/ecotracker" variant="primary" class="justify-center">Go to Dashboard</BaseButton>
+          <ArrowButton v-if="!authStore.isLoggedIn" to="/about" variant="primary" class="justify-center"
+            >Learn more</ArrowButton
           >
-            <!-- Maybe change to "Learn more" instead, with a scroll down, change arrow down or go to about section -->
-            Schedule a Demo <span aria-hidden="true">→</span>
-          </button>
         </div>
 
         <!-- Stats -->
@@ -56,22 +66,22 @@ const stats = [
       <!-- Trust Badges -->
       <div class="mt-6 space-y-4">
         <p class="nav-link-no-color text-stone-700 text-center">Trusted by leading companies worldwide</p>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div class="grid grid-cols-4 gap-4 md:gap-8">
           <div class="flex flex-col items-center justify-center opacity-70 hover:opacity-100 transition-opacity">
-            <div class="h-16 w-16 rounded-xl bg-emerald-700/30 animate-pulse mb-2"></div>
-            <span class="text-stone-700 font-semibold">Microsoft</span>
+            <div class="h-14 sm:h-16 w-14 sm:w-16 rounded-xl bg-emerald-700/30 animate-pulse mb-2"></div>
+            <span class="text-stone-700 font-semibold text-sm sm:text-base">Microsoft</span>
           </div>
           <div class="flex flex-col items-center justify-center opacity-70 hover:opacity-100 transition-opacity">
-            <div class="h-16 w-16 rounded-xl bg-emerald-700/20 mb-2"></div>
-            <span class="text-stone-700 font-semibold">Decathlon</span>
+            <div class="h-14 sm:h-16 w-14 sm:w-16 rounded-xl bg-emerald-700/20 mb-2"></div>
+            <span class="text-stone-700 font-semibold text-sm sm:text-base">Decathlon</span>
           </div>
           <div class="flex flex-col items-center justify-center opacity-70 hover:opacity-100 transition-opacity">
-            <div class="h-16 w-16 rounded-xl bg-emerald-700/30 animate-pulse delay-200 mb-2"></div>
-            <span class="text-stone-700 font-semibold">IBM</span>
+            <div class="h-14 sm:h-16 w-14 sm:w-16 rounded-xl bg-emerald-700/30 animate-pulse delay-200 mb-2"></div>
+            <span class="text-stone-700 font-semibold text-sm sm:text-base">IBM</span>
           </div>
           <div class="flex flex-col items-center justify-center opacity-70 hover:opacity-100 transition-opacity">
-            <div class="h-16 w-16 rounded-xl bg-emerald-700/20 mb-2"></div>
-            <span class="text-stone-700 font-semibold">Accenture</span>
+            <div class="h-14 sm:h-16 w-14 sm:w-16 rounded-xl bg-emerald-700/20 mb-2"></div>
+            <span class="text-stone-700 font-semibold text-sm sm:text-base">Accenture</span>
           </div>
         </div>
       </div>
