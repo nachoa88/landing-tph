@@ -5,6 +5,10 @@ import ContentSection from "@/components/typography/ContentSection.vue";
 import BaseButton from "@/components/ui/BaseButton.vue";
 import ArrowButton from "../ui/ArrowButton.vue";
 import dashboardImage from "@/assets/images/dashboard.webp";
+import accentureLogo from "@/assets/logos/accenture_logo.png";
+import decathlonLogo from "@/assets/logos/decathlon_logo.png";
+import ibmLogo from "@/assets/logos/ibm_logo.png";
+import microsoftLogo from "@/assets/logos/microsoft_logo.png";
 
 const authStore = useAuthStore();
 
@@ -20,6 +24,13 @@ const stats = [
   { number: "40%", text: "Average Carbon Reduction" },
   { number: "90%", text: "Report Accuracy" },
   { number: "60%", text: "Process Automation" },
+];
+
+const trustBadges = [
+  { logo: microsoftLogo, name: "Microsoft" },
+  { logo: decathlonLogo, name: "Decathlon" },
+  { logo: ibmLogo, name: "IBM" },
+  { logo: accentureLogo, name: "Accenture" },
 ];
 </script>
 
@@ -67,21 +78,15 @@ const stats = [
       <div class="mt-6 space-y-4 animate-slide-in-right animation-delay-300">
         <p class="nav-link-no-color text-stone-700 text-center">Trusted by leading companies worldwide</p>
         <div class="grid grid-cols-4 gap-4 md:gap-8">
-          <div class="flex flex-col items-center justify-center opacity-70 hover:opacity-100 transition-opacity">
-            <div class="h-14 sm:h-16 w-14 sm:w-16 rounded-xl bg-emerald-700/30 animate-pulse mb-2"></div>
-            <span class="text-stone-700 font-semibold text-sm sm:text-base">Microsoft</span>
-          </div>
-          <div class="flex flex-col items-center justify-center opacity-70 hover:opacity-100 transition-opacity">
-            <div class="h-14 sm:h-16 w-14 sm:w-16 rounded-xl bg-emerald-700/20 mb-2"></div>
-            <span class="text-stone-700 font-semibold text-sm sm:text-base">Decathlon</span>
-          </div>
-          <div class="flex flex-col items-center justify-center opacity-70 hover:opacity-100 transition-opacity">
-            <div class="h-14 sm:h-16 w-14 sm:w-16 rounded-xl bg-emerald-700/30 animate-pulse delay-200 mb-2"></div>
-            <span class="text-stone-700 font-semibold text-sm sm:text-base">IBM</span>
-          </div>
-          <div class="flex flex-col items-center justify-center opacity-70 hover:opacity-100 transition-opacity">
-            <div class="h-14 sm:h-16 w-14 sm:w-16 rounded-xl bg-emerald-700/20 mb-2"></div>
-            <span class="text-stone-700 font-semibold text-sm sm:text-base">Accenture</span>
+          <div
+            v-for="badge in trustBadges"
+            :key="badge.name"
+            class="flex flex-col items-center justify-center opacity-70 hover:opacity-100 transition-opacity"
+          >
+            <div class="h-14 sm:h-16 w-14 sm:w-16 rounded-xl hover:bg-emerald-700/10 mb-2 overflow-hidden">
+              <img :src="badge.logo" :alt="`${badge.name} logo`" class="w-full h-full object-contain p-2" />
+            </div>
+            <span class="text-stone-700 font-semibold text-sm sm:text-base">{{ badge.name }}</span>
           </div>
         </div>
       </div>

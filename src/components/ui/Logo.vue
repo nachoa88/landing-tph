@@ -1,5 +1,5 @@
 <script setup>
-import ecoTrailLogo from "@/assets/icons/icon_m.png";
+import ecoTrailLogo from "@/assets/logos/ecotrail_logo_m.png";
 </script>
 
 <template>
