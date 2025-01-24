@@ -1,5 +1,6 @@
 <script setup>
 import { RouterLink } from "vue-router";
+import { ref } from "vue";
 import { useForm } from "vee-validate";
 import { loginSchema } from "@/validations/authValidations";
 import BaseButton from "@/components/ui/BaseButton.vue";
@@ -19,9 +20,12 @@ const { handleSubmit, errors } = useForm({
   validationSchema: loginSchema,
 });
 
+// Checkbox state
+const rememberMe = ref(false);
+
 // Submit handler validated by VeeValidate
 const onSubmit = handleSubmit(async (values) => {
-  emit("submit", values);
+  emit("submit", { ...values, rememberMe: rememberMe.value });
 });
 </script>
 
@@ -32,7 +36,7 @@ const onSubmit = handleSubmit(async (values) => {
 
     <div class="form-checkbox-group">
       <div class="form-checkbox-wrapper">
-        <input id="remember" type="checkbox" class="form-checkbox-base" />
+        <input v-model="rememberMe" id="remember" type="checkbox" class="form-checkbox-base" />
       </div>
       <label for="remember" class="ms-2 text-sm font-medium text-stone-900 tracking-wide"> Remember me </label>
     </div>
